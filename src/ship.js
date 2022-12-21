@@ -1,13 +1,13 @@
-export const Ship = (length) => {
-  const lengthOfShip = length;
+const Ship = (length) => {
   let hits = 0;
   let isSunken = false;
   const hit = () => {
-    hits++;
+    if (hits !== length) hits += 1;
   };
   const isSunk = () => {
-    if (hits == lengthOfShip) isSunken = true;
+    if (hits === length) isSunken = true;
     return isSunken;
   };
-  return { hit, isSunk };
+  return { hit, isSunk, length };
 };
+export default Ship;
