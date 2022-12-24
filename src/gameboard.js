@@ -43,12 +43,13 @@ const Gameboard = () => {
   };
   const receiveAttack = (x, y) => {
     const square = arr[x][y];
+    if (square.hasBeenHit) { return false; }
     if (square.ship === null) {
       square.hasBeenHit = true;
-      return false;
+    } else {
+      square.hasBeenHit = true;
+      square.ship.hit();
     }
-    square.hasBeenHit = true;
-    square.ship.hit();
     return true;
   };
   const allSunken = () => {
