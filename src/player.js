@@ -6,14 +6,12 @@ export const player = {
   board: playerBoard,
   opponentBoard: computerBoard,
   placeShip: (x, y, length, isVerticle) => {
-    playerBoard.placeShip(x, y, length, isVerticle);
+    player.board.placeShip(x, y, length, isVerticle);
   },
   attack: (x, y) => {
-    this.opponentBoard.receiveAttack(x, y);
+    player.opponentBoard.receiveAttack(x, y);
   },
-  hasWon: () => {
-    playerBoard.allSunken();
-  },
+  hasWon: () => player.opponentBoard.allSunken(),
 };
 export const computer = {
   board: computerBoard,
@@ -27,9 +25,7 @@ export const computer = {
     }
   },
   placeShip: (x, y, length, isVerticle) => {
-    playerBoard.placeShip(x, y, length, isVerticle);
+    computer.board.placeShip(x, y, length, isVerticle);
   },
-  hasWon: () => {
-    playerBoard.allSunken();
-  },
+  hasWon: () => computer.opponentBoard.allSunken(),
 };

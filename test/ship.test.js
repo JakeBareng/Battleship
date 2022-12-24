@@ -1,5 +1,6 @@
 import { default as ship } from "../src/ship";
 import { default as Gameboard } from "../src/gameboard";
+import { player, computer } from "../src/player";
 describe('ship test', () => {
     const shipOBJ = new ship(3);
     test('ship hits', () => {
@@ -44,4 +45,14 @@ describe('gameboard test', () => {
     test('placement on top of boat', () => {
         expect(gameboard.placeShip(8,0,2,false)).toBe(false);
     });
+});
+
+describe('test Player.js', () => {
+    computer.placeShip(0,0,3,true);
+    player.attack(0,0);
+    player.attack(0,1);
+    expect(player.hasWon()).toBe(false);
+    player.attack(0,2);
+    expect(player.hasWon()).toBe(true);
+
 });
