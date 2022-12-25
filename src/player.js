@@ -1,10 +1,6 @@
-import Gameboard from './gameboard';
-
-const computerBoard = new Gameboard();
-const playerBoard = new Gameboard();
 export const player = {
-  board: playerBoard,
-  opponentBoard: computerBoard,
+  board: null,
+  opponentBoard: null,
   placeShip: (x, y, length, isVerticle) => {
     player.board.placeShip(x, y, length, isVerticle);
   },
@@ -14,8 +10,8 @@ export const player = {
   hasWon: () => player.opponentBoard.allSunken(),
 };
 export const computer = {
-  board: computerBoard,
-  opponentBoard: playerBoard,
+  board: null,
+  opponentBoard: null,
   randomAttack: () => {
     let x = Math.floor(Math.random() * 10);
     let y = Math.floor(Math.random() * 10);

@@ -4,6 +4,7 @@ const Gameboard = () => {
   const size = 10;
   const arr = new Array(size);
   const listOfShips = [];
+
   for (let i = 0; i < arr.length; i += 1) arr[i] = new Array(size);
   for (let i = 0; i < arr.length; i += 1) {
     for (let j = 0; j < arr.length; j += 1) {
@@ -58,6 +59,9 @@ const Gameboard = () => {
     }
     return true;
   };
-  return { receiveAttack, allSunken, placeShip };
+
+  return {
+    receiveAttack, allSunken, placeShip, get grid() { return arr; },
+  };
 };
 export default Gameboard;
