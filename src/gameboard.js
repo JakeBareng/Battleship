@@ -19,7 +19,7 @@ const Gameboard = () => {
     if ((isVerticle && y + lengthOfShip > size) || (!isVerticle && x + lengthOfShip > size)) {
       return false;
     }
-    const ship = new Ship(shipLen);
+    const ship = Ship(shipLen);
     if (isVerticle) {
       for (let i = 0; i < lengthOfShip; i += 1) {
         if (arr[x][y + i].ship !== null) {

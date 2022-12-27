@@ -2,7 +2,7 @@ import { default as ship } from "../src/ship";
 import { default as Gameboard } from "../src/gameboard";
 import { player, computer } from "../src/player";
 describe('ship test', () => {
-    const shipOBJ = new ship(3);
+    const shipOBJ = ship(3);
     test('ship hits', () => {
         shipOBJ.hit();
         shipOBJ.hit();
@@ -15,7 +15,7 @@ describe('ship test', () => {
 });
 
 describe('gameboard test', () => {
-    const gameboard = new Gameboard();
+    const gameboard = Gameboard();
     test('out of bounds on horizontal', () => {
         expect(gameboard.placeShip(9,0,2,false)).toBe(false);        
     });
@@ -48,11 +48,18 @@ describe('gameboard test', () => {
 });
 
 describe('test Player.js', () => {
+    const computerBoard = Gameboard();
+    const playerBoard = Gameboard();
+    
+    player.board = playerBoard;
+    player.opponentBoard = computerBoard;
+    computer.board = computerBoard;
+    computer.opponentBoard = playerBoard;
+
     computer.placeShip(0,0,3,true);
     player.attack(0,0);
     player.attack(0,1);
     expect(player.hasWon()).toBe(false);
     player.attack(0,2);
     expect(player.hasWon()).toBe(true);
-
 });

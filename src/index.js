@@ -1,3 +1,4 @@
-import "./style.css";
-import { grid } from "./DOM";
-grid();
+import './style.css';
+import { gameStart } from './gameLoop';
+
+gameStart();

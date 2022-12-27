@@ -1,0 +1,30 @@
+body {
+    background-color: aliceblue;
+}
+.clickable {
+    cursor: pointer;
+}
+#player-board {
+    width: 500px;
+    height: 500px;
+    display: grid;
+    gap: 2px;
+    grid-template-rows: repeat(10, .5fr);
+    grid-template-columns: repeat(10, .5fr);
+}
+.grid-square {
+    border-radius: 10px;
+    background-color: black;
+}
+.grid-square-empty {
+    background-color: rgba(161, 119, 119, 0.637);
+}
+.grid-square-miss {
+    background-color: rgba(126, 126, 126, 0.61);
+}
+.grid-square-hit {
+    background-color: rgba(255, 0, 0, 0.637);
+}
+.grid-square-ship {
+    background-color: rgba(0, 47, 255, 0.637);
+}
