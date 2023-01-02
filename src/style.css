@@ -4,7 +4,20 @@ body {
 .clickable {
     cursor: pointer;
 }
+.main {
+    display: flex;
+    width: 100vw;
+    justify-content: space-between;
+}
 #player-board {
+    width: 500px;
+    height: 500px;
+    display: grid;
+    gap: 2px;
+    grid-template-rows: repeat(10, .5fr);
+    grid-template-columns: repeat(10, .5fr);
+}
+#computer-board {
     width: 500px;
     height: 500px;
     display: grid;

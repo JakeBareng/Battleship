@@ -16,5 +16,7 @@ player.placeShip(2, 0, 2, true);
 player.placeShip(3, 0, 2, true);
 
 export const gameStart = () => {
-  renderGrid(player.board.grid);
+  let playerGrid = player.board.grid
+  let computerGrid = computer.board.grid
+  renderGrid(playerGrid,computerGrid);
 };
