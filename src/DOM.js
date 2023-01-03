@@ -2,6 +2,8 @@ const playerBoard = document.getElementById('player-board');
 const computerBoard = document.getElementById('computer-board');
 
 export const renderGrid = (gameboard,gameboard2) => {
+  playerBoard.replaceChildren();
+  computerBoard.replaceChildren();
   for (let i = 0; i < gameboard.length; i+= 1) {
     for (let k = 0; k < gameboard.length; k+= 1) {
       const square = document.createElement('div');

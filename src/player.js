@@ -5,7 +5,7 @@ export const player = {
     player.board.placeShip(x, y, length, isVerticle);
   },
   attack: (x, y) => {
-    player.opponentBoard.receiveAttack(x, y);
+    return player.opponentBoard.receiveAttack(x, y);
   },
   hasWon: () => player.opponentBoard.allSunken(),
 };
