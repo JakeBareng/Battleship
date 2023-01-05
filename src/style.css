@@ -5,9 +5,12 @@ body {
     cursor: pointer;
 }
 .main {
+
+}
+.boards {
     display: flex;
     width: 100vw;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 #player-board {
     width: 500px;
@@ -26,7 +29,6 @@ body {
     grid-template-columns: repeat(10, .5fr);
 }
 .grid-square {
-    border-radius: 10px;
     background-color: black;
 }
 .grid-square-empty {

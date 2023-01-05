@@ -10,34 +10,26 @@ player.opponentBoard = computerBoard;
 computer.board = computerBoard;
 computer.opponentBoard = playerBoard;
 
-player.placeShip(0, 0, 2, true);
-player.placeShip(1, 0, 2, true);
-player.placeShip(2, 0, 2, true);
-player.placeShip(3, 0, 2, true);
-
-computer.placeShip(0, 0, 2, true);
-computer.placeShip(1, 0, 2, true);
-computer.placeShip(2, 0, 2, true);
-computer.placeShip(3, 0, 2, true);
-
-let computerGridDOM = document.getElementById('computer-board')
-let playerGridDOM = document.getElementById('player-board')
+const computerGridDOM = document.getElementById('computer-board')
+const playerGridDOM = document.getElementById('player-board')
 
 export const gameStart = () => {
   let planningPhase = false;
   let playerGrid = player.board.grid
   let computerGrid = computer.board.grid
+  let shipLengthArray = [2,2,3,4,5]; 
   renderGrid(playerGrid,computerGrid);
 
   document.addEventListener('click',(e) => {
     const element = e.target;
+    if (element.parentElement.parentElement.className !== 'boards') return;
     let coord = element.dataset.elementNum.split(",");
     if (element.parentElement === computerGridDOM) {
       let validAttack = player.attack(coord[1],coord[0]);
       if (validAttack) {
-        renderGrid(playerGrid,computerGrid)
+        computer.randomAttack();
+        renderGrid(playerGrid,computerGrid);
       }
-      /* ----------------continue to opponent move------------------- */
     }
     else if (element.parentElement === playerGridDOM) {
       if (planningPhase == true) {
@@ -45,7 +37,4 @@ export const gameStart = () => {
       }
     }
   })
-
-
-
 };
