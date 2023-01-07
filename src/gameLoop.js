@@ -10,11 +10,13 @@ player.opponentBoard = computerBoard;
 computer.board = computerBoard;
 computer.opponentBoard = playerBoard;
 
+
+
 const computerGridDOM = document.getElementById('computer-board')
 const playerGridDOM = document.getElementById('player-board')
 
 export const gameStart = () => {
-  let planningPhase = false;
+  let planningPhase = true;
   let playerGrid = player.board.grid
   let computerGrid = computer.board.grid
   let shipLengthArray = [2,2,3,4,5]; 
@@ -23,17 +25,23 @@ export const gameStart = () => {
   document.addEventListener('click',(e) => {
     const element = e.target;
     if (element.parentElement.parentElement.className !== 'boards') return;
-    let coord = element.dataset.elementNum.split(",");
+    let coord = Array.from(element.dataset.elementNum.split(","),Number);
     if (element.parentElement === computerGridDOM) {
       let validAttack = player.attack(coord[1],coord[0]);
       if (validAttack) {
         computer.randomAttack();
         renderGrid(playerGrid,computerGrid);
+        /* -----------------------check if there's a winner-------------------- */
       }
     }
     else if (element.parentElement === playerGridDOM) {
       if (planningPhase == true) {
-        /* --------------------create planning phase-------------------- */
+        if (player.placeShip(coord[1],coord[0],shipLengthArray[shipLengthArray.length-1],true)) {
+          /* ----------place enemy ship--------- */
+          shipLengthArray.pop();
+          if (shipLengthArray.length == 0) planningPhase = false;
+        }
+        renderGrid(playerGrid,computerGrid);
       }
     }
   })
