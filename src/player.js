@@ -1,12 +1,8 @@
 export const player = {
   board: null,
   opponentBoard: null,
-  placeShip: (x, y, length, isVerticle) => {
-    return player.board.placeShip(x, y, length, isVerticle);
-  },
-  attack: (x, y) => {
-    return player.opponentBoard.receiveAttack(x, y);
-  },
+  placeShip: (x, y, length, isVerticle) => player.board.placeShip(x, y, length, isVerticle),
+  attack: (x, y) => player.opponentBoard.receiveAttack(x, y),
   hasWon: () => player.opponentBoard.allSunken(),
 };
 
@@ -21,8 +17,15 @@ export const computer = {
       y = Math.floor(Math.random() * 10);
     }
   },
-  placeShip: (x, y, length, isVerticle) => {
-    return computer.board.placeShip(x, y, length, isVerticle);
+  placeShip: (length) => {
+    let trueFalse = Math.random() >= 0.5;
+    let x = Math.floor(Math.random() * 10);
+    let y = Math.floor(Math.random() * 10);
+    while (!computer.board.placeShip(x, y, length, trueFalse)) {
+      x = Math.floor(Math.random() * 10);
+      y = Math.floor(Math.random() * 10);
+    }
+    
   },
   hasWon: () => computer.opponentBoard.allSunken(),
 };
