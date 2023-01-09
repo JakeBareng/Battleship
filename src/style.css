@@ -1,11 +1,18 @@
 body {
-    background-color: aliceblue;
+    margin: 0;
 }
 .clickable {
     cursor: pointer;
 }
+header {
+    background-color: rgba(204, 204, 204, 0.363);
+}
+h3 {
+    margin: auto;
+    width: fit-content;
+}
 .main {
-
+    width: 100vw;
 }
 .boards {
     display: flex;
@@ -46,4 +53,8 @@ body {
 }
 .grid-square-ship {
     background-color: rgba(0, 47, 255, 0.637);
+}
+.game-heading {
+    width: fit-content;
+    margin: auto;
 }
